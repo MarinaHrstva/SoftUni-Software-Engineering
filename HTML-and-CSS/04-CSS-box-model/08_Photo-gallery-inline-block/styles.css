@@ -1,0 +1,8 @@
+ul.gallery li{
+    list-style: none;
+    border-width: 0.4rem;
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+
+}
