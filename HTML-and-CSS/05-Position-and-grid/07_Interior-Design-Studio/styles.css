@@ -1,0 +1,13 @@
+
+img{
+    position: absolute;
+}
+
+h1{
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    left: 180px;
+    color: antiquewhite;
+    text-shadow: 1px 1px 20px black;
+}
