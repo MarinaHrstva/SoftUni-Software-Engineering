@@ -3,7 +3,7 @@ function calorieObject(array){
 
     for (let i = 0; i < array.length; i+=2) {
         let key=array[i];
-        let prop=array[i+1]
+        let prop=Number(array[i+1]);
         list[key]=prop
     }
 
