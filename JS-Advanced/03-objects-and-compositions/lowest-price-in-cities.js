@@ -14,7 +14,7 @@ function solve(arr) {
   for (const key in result) {
     let sorted = Object.keys(result[key]).sort(
       (a, b) => result[key][a] - result[key][b]);
-      console.log(`${key} -> ${result[key][sorted[0]]} (Sample Town)`);
+      console.log(`${key} -> ${result[key][sorted[0]]} (${sorted[0]})`);
   }
 }
 
