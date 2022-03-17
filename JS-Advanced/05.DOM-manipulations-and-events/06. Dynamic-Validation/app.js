@@ -1,3 +1,3 @@
-function subtract() {
+function validate() {
     console.log('TODO:...');
 }

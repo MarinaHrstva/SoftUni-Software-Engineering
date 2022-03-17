@@ -1,3 +1,3 @@
-function toggle() {
+function focused() {
     console.log('TODO:...');
 }
