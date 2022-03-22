@@ -22,22 +22,21 @@ function attachEventsListeners() {
     const minutesInputElement = document.getElementById('minutes');
     const secondsInputElement = document.getElementById('seconds');
 
-    document.getElementById('daysBtn').addEventListener('click', onConvert);
-    document.getElementById('hoursBtn').addEventListener('click', onConvert);
-    document.getElementById('minutesBtn').addEventListener('click', onConvert);
-    document.getElementById('secondsBtn').addEventListener('click', onConvert);
-
-
+    document.querySelector('main').addEventListener('click', onConvert);
 
 
     function onConvert(e) {
-        const input = e.target.parentNode.querySelector('input[type="text"]');
-        const time = convert(Number(input.value), input.id);
 
-        daysInputElement.value = time.days;
-        hoursInputElement.value = time.hours;
-        minutesInputElement.value = time.minutes;
-        secondsInputElement.value = time.seconds;
+        if (e.target.tagName == 'INPUT' && e.target.type == 'button') {
+            const input = e.target.parentNode.querySelector('input[type="text"]');
+            const time = convert(Number(input.value), input.id);
+
+            daysInputElement.value = time.days;
+            hoursInputElement.value = time.hours;
+            minutesInputElement.value = time.minutes;
+            secondsInputElement.value = time.seconds;
+        }
+
     }
 
 
