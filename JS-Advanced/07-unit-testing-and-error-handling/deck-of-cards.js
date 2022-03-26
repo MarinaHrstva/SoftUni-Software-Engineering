@@ -1,16 +1,20 @@
 function deckOfCards(cards) {
-    let invalidCard = '';
-    try {
-       
-        for (const line of card) {
-            invalidCard=line
-createCard(line[0],line[1])
+
+    let result = [];
+
+    for (const card of cards) {
+        let face = card.slice(0, - 1);
+        let suit = card.slice(-1);
+
+        try {
+            result.push(createCard(face, suit))
+        } catch (error) {
+            console.log(`Invalid card: ` + card);
+            return
         }
-    } catch (error) {
-    console.log(`Invalid card: ${invalidCard}`);
-}
 
-
+    }
+    console.log(result.join(' '));
 
     function createCard(face, suit) {
         let faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
