@@ -35,3 +35,8 @@ const cinema = {
 
     }
 };
+
+
+module.exports=cinema;
+
+console.log(cinema.showMovies(['hi', 'hello']));
