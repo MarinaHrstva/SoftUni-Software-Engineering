@@ -73,7 +73,7 @@ function solve() {
 
 
         moreInfoBtnElement.addEventListener('click', (e) => {
-            if (e.target.textContent == 'More Info') {
+            if (e.currentTarget.textContent == 'More Info') {
                 hideTrElement.style.display = 'contents'
                 e.target.textContent = 'Less Info'
             } else {
