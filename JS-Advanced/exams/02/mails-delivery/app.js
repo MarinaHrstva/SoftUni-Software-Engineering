@@ -31,9 +31,13 @@ function solve() {
         let sendBtnElement = document.createElement('button');
         sendBtnElement.textContent = 'Send';
         sendBtnElement.setAttribute('id', 'send')
+        sendBtnElement.setAttribute('type', 'submit');
+
         let deleteBtnElement = document.createElement('button');
         deleteBtnElement.textContent = 'Delete';
-        deleteBtnElement.setAttribute('id', 'delete')
+        deleteBtnElement.setAttribute('id', 'delete');
+        deleteBtnElement.setAttribute('type', 'submit');
+
 
         listActionDivElement.appendChild(sendBtnElement);
         listActionDivElement.appendChild(deleteBtnElement);
@@ -44,13 +48,7 @@ function solve() {
         recipientNameInputElement.value = '';
         titleInputElement.value = '';
         messageInputElement.value = '';
-        //  ------------------------------------------------------------------   <!-- <li>
-        //    ---------------------------------------------------- <span>To: John@abv.bg</span>
-        //    ------------------------------------------- <span>Title: For Work</span>
-        //     <div class="btn">
-        //         <button type="submit" class="delete">Delete</button>
-        //     </div>
-        // </li> -->
+ 
         sendBtnElement.addEventListener('click', (e) => {
             let sentListUlEleement = document.querySelector('ul.sent-list')
             console.log(sentListUlEleement);
@@ -66,7 +64,7 @@ function solve() {
             newLiElement.appendChild(newSpanTitleElement)
 
             let btnDivElement = document.createElement('div');
-            btnDivElement.classList.add('btn')
+            btnDivElement.classList.add('btn');
             let newDelBtnElement = document.createElement('button');
             newDelBtnElement.textContent='Delete';
             newDelBtnElement.classList.add('delete')
