@@ -31,4 +31,6 @@ const flowerShop = {
     }
 }
 
+
+console.log(flowerShop.sellFlowers(["Rose", "Lily", "Orchid"],3))
 module.exports=flowerShop
