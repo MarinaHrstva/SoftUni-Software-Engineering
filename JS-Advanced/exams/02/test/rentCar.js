@@ -49,6 +49,6 @@ const rentCar = {
         }
     }
 }
-rentCar.searchCar(["Volkswagen", "BMW", "Audi"], 'Audi')
+
 module.exports=rentCar
 
