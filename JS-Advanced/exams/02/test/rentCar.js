@@ -1,54 +1,41 @@
-const rentCar = {
-    searchCar(shop, model) {
-        let findModel = [];
-        if (Array.isArray(shop) && typeof model == 'string') {
-            for (let i = 0; i < shop.length; i++) {
-                if (model == shop[i]) {
-                    findModel.push(shop[i]);
-                }
-            }
-            if (findModel.length !== 0) {
-                return `There is ${findModel.length} car of model ${model} in the catalog!`;
-            } else {
-                throw new Error('There are no such models in the catalog!')
-            }
-        } else {
-            throw new Error('Invalid input!')
-        }
+const bookSelection = {
+    isGenreSuitable(genre, age) {
+      if (age <= 12 && (genre === "Thriller" || genre === "Horror")) {
+        return `Books with ${genre} genre are not suitable for kids at ${age} age`;
+      } else {
+        return `Those books are suitable`;
+      }
     },
-    calculatePriceOfCar(model, days) {
-        let catalogue = {
-            Volkswagen: 20,
-            Audi: 36,
-            Toyota: 40,
-            BMW: 45,
-            Mercedes: 50
-        };
-
-        if (typeof model == 'string' && Number.isInteger(days)) {
-            if (catalogue.hasOwnProperty(model)) {
-                let cost = catalogue[model] * days;
-                return `You choose ${model} and it will cost $${cost}!`
-            } else {
-                throw new Error('No such model in the catalog!')
-            }
-        } else {
-            throw new Error('Invalid input!')
-        }
+    isItAffordable(price, budget) {
+      if (typeof price !== "number" || typeof budget !== "number") {
+        throw new Error("Invalid input");
+      }
+  
+      let result = budget - price;
+  
+      if (result < 0) {
+        return "You don't have enough money";
+      } else {
+        return `Book bought. You have ${result}$ left`;
+      }
     },
-    checkBudget(costPerDay, days, budget) {
-        if (!Number.isInteger(costPerDay) || !Number.isInteger(days) || !Number.isInteger(budget)) {
-            throw new Error('Invalid input!');
-        } else {
-            let cost = costPerDay * days;
-            if (cost <= budget) {
-                return `You rent a car!`
-            } else {
-                return 'You need a bigger budget!'
-            }
+    suitableTitles(array, wantedGenre) {
+      let resultArr = [];
+  
+      if (!Array.isArray(array) || typeof wantedGenre !== "string") {
+        throw new Error("Invalid input");
+      }
+      array.map((obj) => {
+        if (obj.genre === wantedGenre) {
+          resultArr.push(obj.title);
         }
-    }
-}
+      });
+      return resultArr;
+    },
+  };
 
-module.exports=rentCar
+module.exports=bookSelection
 
+console.log(bookSelection.suitableTitles([
+    { title: "The Da Vinci Code",  genre: "Thriller" },
+    { title: "Book1", genre: "Thriller" },{ title: "Book2", genre: "Thriller" }],"Thriller"))

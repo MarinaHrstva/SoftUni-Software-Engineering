@@ -65,9 +65,10 @@ function solve() {
         })
 
         finishBtnElement.addEventListener('click', (e) => {
-            completedOrdersSectionElement.appendChild(containerDiv);
             finishBtnElement.remove();
             startBtnElement.remove();
+            completedOrdersSectionElement.appendChild(containerDiv);
+          
         })
 
     })
