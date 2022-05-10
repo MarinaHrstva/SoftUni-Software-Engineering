@@ -1,0 +1,287 @@
+@import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
+@import url(./reset.css);
+@import url(./navigation.css);
+@import url(./components.css);
+@import url(./hero-section.css);
+@import url(./footer.css);
+
+
+:root {
+  --gold-color: #c7a335;
+  --dark-gold-color: #96670b;
+  --grey-color: #4d5875 --section-padding: 1rem 2rem
+}
+
+
+
+
+body {
+  background-color: #f7fafc;
+  font-family: "Helvetica", sans-serif;
+}
+
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+}
+
+h6 {
+  font-size: 1.2rem;
+}
+
+button:hover{
+  color: #96670b;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* navi */
+
+header {
+  position: relative;
+  z-index: 1000;
+  width: 100vw;
+
+  background-color: white;
+  color: grey;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  gap: 1.5rem;
+}
+
+.iconList {
+  display: flex;
+  justify-content: space-around;
+
+  gap: 1rem;
+
+}
+
+.iconList i {
+  padding-left: 0.55rem;
+}
+
+
+.iconList p {
+  color: grey;
+}
+
+.iconList p:hover{
+  color: white;
+}
+
+.navList {
+
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.iconList li:hover,
+.navList li:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #96670b;
+}
+
+.logo {
+  background-color: #96670b;
+  position: relative;
+}
+
+
+
+/* Hero--------------------------- */
+
+.heroSection{
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  z-index: 1;
+}
+
+.heroSection img{
+   position: absolute;
+   z-index: 2;
+   width: 100%;
+   height: 100%;
+}
+
+.heroText{
+   padding: 2rem 1rem;
+   background-color: black;
+   opacity: 0.6;
+   position: absolute;
+   top: 50%;
+   left: 10%;
+   color: white;
+   width: 350px;
+   height: 200px;
+   z-index: 3;
+
+
+
+}
+
+.heroText button{
+   margin-top: 1rem;
+   display: block;
+   color: orange;
+   padding: 0.5rem 1rem;
+   background-color: transparent;
+   border: 2px solid white;
+}
+/* MAP SECTION-------------------------- */
+
+
+
+#map{
+  background-color:#96670b;
+  background-image: linear-gradient(to right top, #96670b, #a27618, #ae8423, #ba942f, #c5a33a);
+  color: white;
+  height: 250px;
+}
+
+#map #mapWrapper{
+
+  width: 600px;
+  margin-left: 25%;
+text-align: center;
+}
+
+#map #mapWrapper h2{
+  padding: 1rem;
+}
+#map #mapWrapper ul li{
+  padding: 0.25rem;
+  font-size: 16px;
+}
+
+#map #mapWrapper button{
+  background-color: transparent;
+  margin-top: 0.5rem;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border: white 2px solid;
+}
+
+#map #mapWrapper button:hover{
+  color: #96670b;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Get the most-------------- */
+#getTheMost h2, #getTheMost p {
+  padding: 1rem;
+  color: grey;
+  text-align: center;
+
+}
+
+#getTheMost p{
+  padding-bottom: 0.5rem;
+}
+
+#getTheMost ul{
+  padding-inline: 5rem;
+  display: flex;
+  flex-wrap: nowrap;
+  /* gap: 1rem; */
+  justify-content: space-around;
+}
+#getTheMost ul li{
+  width: 20%;
+  padding: 1rem;
+}
+#getTheMost ul li p{
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+
+.cardImgWrapper{
+  border-radius: 100%;
+  border: 1px solid black;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+
+}
+
+.cardImgWrapper img{
+width: 100%;
+
+}
+
+
+/* footer---------------------------- */
+footer{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.footerWrapper{
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  background-color: #96670b;
+}
+
+footer .footerText{
+  display: flex;
+  flex-direction: column;
+}
+
+footer .footerText h4{
+  font-size: 16px;
+}
+
+footer .footerText hp{
+  font-size: 14px;
+}
+
+.footerWrapper button{
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+
+}
+
+.footerWrapper button:hover{
+  color: #96670b;
+  background-color: white;
+  cursor: pointer;
+}
+#reserved{
+  background-color: white;
+  text-align: center;
+  font-size: 10px;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+
+}
