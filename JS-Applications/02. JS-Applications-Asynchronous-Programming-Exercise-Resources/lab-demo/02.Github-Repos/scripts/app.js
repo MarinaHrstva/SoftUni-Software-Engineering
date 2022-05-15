@@ -30,6 +30,6 @@ function loadRepos() {
 
 	function handleError(error) {
 		list.innerHTML = '';
-		list.textContent = `${error.message}`;
+		list.textContent = `${error}`;
 	}
 }
