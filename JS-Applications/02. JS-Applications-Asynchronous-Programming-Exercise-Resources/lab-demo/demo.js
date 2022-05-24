@@ -1,6 +1,6 @@
 console.log('Start');
-setTimeout(()=>{
+setTimeout(() => {
     console.log('Done');
-},2000)
+}, 2000)
 
 console.log('End');
