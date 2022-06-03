@@ -14,3 +14,12 @@ async function getAllPosts() {
     return data;
 }
 
+async function getCommentsByPostId(postId) {
+    const url = `http://localhost:3030/jsonstore/blog/comments`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const comments = Object.values(data).filter(c => c.postId == postId);
+
+    return comments;
+} 
