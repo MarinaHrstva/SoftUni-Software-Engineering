@@ -9,11 +9,20 @@ function attachEvents() {
 attachEvents();
 
 async function displayPost(postId) {
-
+    const postUlElement = document.getElementById('post-comments')
+    postUlElement.textContent = '';
     const selectedId = document.getElementById('posts').value;
     const post = await getPostById(selectedId);
     document.getElementById('post-title').textContent = post.title;
     document.getElementById('post-body').textContent = post.body;
+
+    const comments = await getCommentsByPostId(selectedId);
+    comments.forEach(c => {
+        const liElement = document.createElement('li');
+        liElement.textContent = c.text;
+        postUlElement.appendChild(liElement);
+    })
+
 
 }
 
