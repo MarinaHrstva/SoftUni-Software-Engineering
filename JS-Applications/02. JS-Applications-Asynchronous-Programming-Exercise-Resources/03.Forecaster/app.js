@@ -5,8 +5,14 @@ function attachEvents() {
 }
 
 attachEvents();
+const symbols = {
+    Sunny: '\&#x2600',
+    'Partly sunny': '&#x26C5',
+    Overcast: '&#x2601',
+    Rain: '&#x2614',
+    Degrees: '&#176'
 
-
+}
 
 async function displayWeather() {
     let searchedLocation = document.getElementById('location').value;
@@ -16,15 +22,6 @@ async function displayWeather() {
     const forecastElement = document.getElementById('forecast');
     forecastElement.style.display = 'block';
 
-    const symbols = {
-        Sunny: '\&#x2600',
-        'Partly sunny': '&#x26C5',
-        Overcast: '&#x2601',
-        Rain: '&#x2614',
-        Degrees: '&#176'
-
-    }
-    
     const currentDivElement = document.getElementById('current');
     const forcastDivElement = document.createElement('div');
     forcastDivElement.classList.add('forcasts');
@@ -37,7 +34,7 @@ async function displayWeather() {
 
     const conditionElement = document.createElement('span');
     conditionElement.classList.add('condition');
-    
+
     const first = document.createElement('span');
     first.classList.add('forecast-data');
     first.textContent = currentWeather.forecast.condition;
@@ -53,6 +50,44 @@ async function displayWeather() {
     forcastDivElement.appendChild(first);
     forcastDivElement.appendChild(second);
     forcastDivElement.appendChild(third);
+
+    const upcomingDivElement = document.getElementById('upcoming');
+    const forcastUpcomingDivElement = document.createElement('div');
+    upcomingDivElement.appendChild(forcastUpcomingDivElement);
+    forcastUpcomingDivElement.classList.add('forcast-info')
+
+    
+    const upcomingDays=upcomingWeather.forecast;
+    upcomingDays.forEach(d=>{
+       forcastUpcomingDivElement.appendChild(createSpans(d));
+       console.log(d);
+   })
+
+
+
+}
+
+function createSpans(day) {
+    const upcomingSpanElement = document.createElement('span');
+    upcomingSpanElement.classList.add('upcoming');
+
+    const upcomingSpanSymbolElement = document.createElement('span');
+    upcomingSpanSymbolElement.classList.add('symbol');
+    upcomingSpanSymbolElement.innerHTML = `${symbols[day.condition]}`
+
+    const upcomingDegreesSpanElement = document.createElement('span');
+    upcomingDegreesSpanElement.classList.add('forecast-data');
+    upcomingDegreesSpanElement.textContent = `${day.low}/${day.high}`;
+
+    const upcomingConditioSpanElement = document.createElement('span');
+    upcomingConditioSpanElement.classList.add('forecast-data');
+    upcomingConditioSpanElement.textContent=day.condition;
+
+    upcomingSpanElement.appendChild(upcomingSpanSymbolElement);
+    upcomingSpanElement.appendChild(upcomingDegreesSpanElement);
+    upcomingSpanElement.appendChild(upcomingConditioSpanElement);
+
+    return upcomingSpanElement
 
 }
 
