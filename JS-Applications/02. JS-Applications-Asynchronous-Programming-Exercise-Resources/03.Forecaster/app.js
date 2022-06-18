@@ -60,7 +60,6 @@ async function displayWeather() {
     const upcomingDays=upcomingWeather.forecast;
     upcomingDays.forEach(d=>{
        forcastUpcomingDivElement.appendChild(createSpans(d));
-       console.log(d);
    })
 
 
