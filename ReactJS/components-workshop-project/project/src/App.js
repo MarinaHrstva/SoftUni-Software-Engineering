@@ -1,14 +1,25 @@
-import {Header} from './components/common/Header'
+import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
-
+import { Search } from './components/search/Search';
+import { UserSection } from './components/user-section/UserSection';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-    <Header/>
-    <Footer/>
+    <div >
+
+      <Header />
+
+      <main class="main">
+        <section class="card users-container">
+          <Search />
+          <UserSection />
+        </section>
+      </main>
+
+      <Footer />
+
     </div>
   );
 }
