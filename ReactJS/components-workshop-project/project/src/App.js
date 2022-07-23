@@ -11,8 +11,8 @@ function App() {
 
       <Header />
 
-      <main class="main">
-        <section class="card users-container">
+      <main className="main">
+        <section className="card users-container">
           <Search />
           <UserSection />
         </section>
