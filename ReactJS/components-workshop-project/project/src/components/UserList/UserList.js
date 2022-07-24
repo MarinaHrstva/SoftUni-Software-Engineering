@@ -6,13 +6,14 @@ import { UserActions } from './UserListConstants';
 import { UserItem } from "./user-item/UserItem"
 import { UserDetails } from "./user-details/UserDetails"
 import { UserEdit } from './user-edit/UserEdit';
+import { UserDelete } from './user-delete/UserDelete';
 
 export const UserList = ({
     users,
 }) => {
 
     const [userAction, setUserAction] = useState({ user: null, action: null });
- 
+
     const userActionClickHandler = (userId, actionType) => {
         userService.getOne(userId)
             .then(user => {
@@ -44,6 +45,15 @@ export const UserList = ({
                 <UserEdit
                     user={userAction.user}
                     onClose={onCloseHandler}
+                />
+            }
+
+            {userAction.action === UserActions.Delete &&
+                <UserDelete
+                    user={userAction.user}
+                    onClose={onCloseHandler}
+
+
                 />
             }
 
@@ -107,7 +117,7 @@ export const UserList = ({
                     {users.map(user =>
                         <UserItem key={user._id}
                             user={user}
-                           onActionClick ={userActionClickHandler}
+                            onActionClick={userActionClickHandler}
                         />
                     )}
                 </tbody>
