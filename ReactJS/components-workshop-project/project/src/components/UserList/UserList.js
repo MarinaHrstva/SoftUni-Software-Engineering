@@ -1,53 +1,29 @@
 import { useState } from 'react'
 
 import * as userService from '../../services/userService';
+import { UserActions } from './UserListConstants';
 
 import { UserItem } from "./user-item/UserItem"
 import { UserDetails } from "./user-details/UserDetails"
+import { UserEdit } from './user-edit/UserEdit';
 
 export const UserList = ({
     users,
 }) => {
 
     const [userAction, setUserAction] = useState({ user: null, action: null });
-
-    const UserActions = {
-        Edit: 'edit',
-        Delete: 'delete',
-        Details: 'details'
-    }
-
-    const delailsClickHandler = (userId) => {
+ 
+    const userActionClickHandler = (userId, actionType) => {
         userService.getOne(userId)
             .then(user => {
                 setUserAction({
                     user,
-                    action: UserActions.Details
+                    action: actionType
                 })
             })
     }
 
-    const editClickHandler = (userId) => {
-        userService.getOne(userId)
-            .then(user => {
-                setUserAction({
-                    user,
-                    action: UserActions.Edit
-                })
-            })
-    }
-
-    const deleteClickHandler = (userId) => {
-        userService.getOne(userId)
-            .then(user => {
-                setUserAction({
-                    user,
-                    action: UserActions.Delete
-                })
-            })
-    }
-
-    const detailsCloseHandler = () => {
+    const onCloseHandler = () => {
         setUserAction({
             user: null,
             action: null
@@ -60,7 +36,14 @@ export const UserList = ({
             {userAction.action === UserActions.Details &&
                 < UserDetails
                     user={userAction.user}
-                    onClose={detailsCloseHandler}
+                    onClose={onCloseHandler}
+                />
+            }
+
+            {userAction.action === UserActions.Edit &&
+                <UserEdit
+                    user={userAction.user}
+                    onClose={onCloseHandler}
                 />
             }
 
@@ -121,7 +104,12 @@ export const UserList = ({
                 </thead>
                 <tbody>
                     {/* <!-- Table row component --> */}
-                    {users.map(user => <UserItem key={user._id} user={user} onDetailsClick={delailsClickHandler} />)}
+                    {users.map(user =>
+                        <UserItem key={user._id}
+                            user={user}
+                           onActionClick ={userActionClickHandler}
+                        />
+                    )}
                 </tbody>
             </table>
         </div>
