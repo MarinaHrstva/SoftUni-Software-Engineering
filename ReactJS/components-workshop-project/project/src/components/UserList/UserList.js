@@ -9,23 +9,60 @@ export const UserList = ({
     users,
 }) => {
 
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [userAction, setUserAction] = useState({ user: null, action: null });
+
+    const UserActions = {
+        Edit: 'edit',
+        Delete: 'delete',
+        Details: 'details'
+    }
 
     const delailsClickHandler = (userId) => {
         userService.getOne(userId)
             .then(user => {
-                setSelectedUser(user);
+                setUserAction({
+                    user,
+                    action: UserActions.Details
+                })
+            })
+    }
+
+    const editClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setUserAction({
+                    user,
+                    action: UserActions.Edit
+                })
+            })
+    }
+
+    const deleteClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setUserAction({
+                    user,
+                    action: UserActions.Delete
+                })
             })
     }
 
     const detailsCloseHandler = () => {
-        setSelectedUser(null);
+        setUserAction({
+            user: null,
+            action: null
+        })
     }
 
     return (
         <div className="table-wrapper">
 
-            {selectedUser && <UserDetails user={selectedUser} onClose={detailsCloseHandler} />}
+            {userAction.action === UserActions.Details &&
+                < UserDetails
+                    user={userAction.user}
+                    onClose={detailsCloseHandler}
+                />
+            }
 
             <table className="table">
                 <thead>
