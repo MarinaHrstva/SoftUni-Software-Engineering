@@ -18,6 +18,8 @@ export const UserList = () => {
         userService.getAll()
             .then(users => setUsers(users));
     }, []);
+
+    
     const userActionClickHandler = (userId, actionType) => {
         userService.getOne(userId)
             .then(user => {
@@ -37,7 +39,7 @@ export const UserList = () => {
 
     const userCreateHandler = (e) => {
         e.preventDefault()
-        
+
         const formData = new FormData(e.target);
 
         const {

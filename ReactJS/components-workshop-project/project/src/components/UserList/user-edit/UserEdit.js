@@ -26,7 +26,7 @@ export const UserEdit = ({
                                 <label for="firstName">First name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="firstName" name="firstName" type="text" />
+                                    <input id="firstName" name="firstName" type="text" defaultValue={user.firstName}/>
                                 </div>
                                 <p className="form-error">
                                     First name should be at least 3 characters long!
