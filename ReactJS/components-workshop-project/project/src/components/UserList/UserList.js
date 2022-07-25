@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import * as userService from '../../services/userService';
 import { UserActions } from './UserListConstants';
@@ -9,12 +9,15 @@ import { UserEdit } from './user-edit/UserEdit';
 import { UserDelete } from './user-delete/UserDelete';
 import { UserCreate } from './user-create/UserCreate';
 
-export const UserList = ({
-    users,
-}) => {
+export const UserList = () => {
 
+    const [users, setUsers] = useState([]);
     const [userAction, setUserAction] = useState({ user: null, action: null });
 
+    useEffect(() => {
+        userService.getAll()
+            .then(users => setUsers(users));
+    }, []);
     const userActionClickHandler = (userId, actionType) => {
         userService.getOne(userId)
             .then(user => {
@@ -34,6 +37,7 @@ export const UserList = ({
 
     const userCreateHandler = (e) => {
         e.preventDefault()
+        
         const formData = new FormData(e.target);
 
         const {
@@ -56,8 +60,8 @@ export const UserList = ({
 
         userService.create(userData)
             .then(user => {
-                console.log(user);
-                onCloseHandler()
+                setUsers(oldUsers => [...oldUsers, user]);
+                onCloseHandler();
             })
     }
 
