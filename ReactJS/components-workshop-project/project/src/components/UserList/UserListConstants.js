@@ -2,5 +2,6 @@
 export const UserActions = {
     Edit: 'edit',
     Delete: 'delete',
-    Details: 'details'
+    Details: 'details',
+    Add:'add',
 }

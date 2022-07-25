@@ -1,10 +1,9 @@
 
-export const UserEdit = ({
-    user,
-    onClose,
-    onEdit
-}) => {
-    return (
+export const UserCreate=({
+    onClose
+})=>{
+
+    return(
         <div className="overlay">
             <div className="backdrop"></div>
             <div className="modal">
