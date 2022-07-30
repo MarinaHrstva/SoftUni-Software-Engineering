@@ -1,22 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form >
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input type="text" id='username' />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input type="text" id='password' />
+          </div>
+          <div>
+            <input type="submit" value='Login' onClick={submitHandler} />
+          </div>
+        </form>
       </header>
     </div>
   );
