@@ -29,7 +29,7 @@ function Home() {
                 <h1>Latest Games</h1>
                 {
                     games.length > 0
-                        ? games.map(game => <LatestGame game={game} />)
+                        ? games.map(game => <LatestGame game={game} key={game._id} />)
                         : < p className="no-articles">No games yet</p>
                 }
             </div>
