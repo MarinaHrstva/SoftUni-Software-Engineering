@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route,useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import * as gameService from './services/gameServise'
@@ -9,14 +9,15 @@ import Home from './components/home/Home';
 import Login from './components/login/login';
 import Register from './components/register/Register';
 import CreateGame from './components/create-game/CreateGame';
-import Catalog from './components/create-game/catalog/Catalog';
-import GameDetails from './components/create-game/catalog/GameDetails';
+import Catalog from './components/catalog/Catalog';
+import GameDetails from './components/catalog/GameDetails';
 
 
 
 function App() {
 
 	const [games, setGames] = useState([]);
+	const navigate=useNavigate()
 
 	useEffect(() => {
 		gameService.getAll()
@@ -40,6 +41,16 @@ function App() {
 
 	}
 
+	const addGame = (gameData)=>{
+
+		setGames(state => [
+			...state,
+			gameData
+		])
+
+		navigate('/catalog');
+	}
+
 
 	return (
 
@@ -50,9 +61,9 @@ function App() {
 					<Route path='/' element={<Home games={games} />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
-					<Route path='/createGame' element={<CreateGame />} />
+					<Route path='/createGame' element={<CreateGame addGame={addGame} />} />
 					<Route path='/catalog' element={<Catalog games={games} />} />
-					<Route path='/catalog/:gameId' element={<GameDetails games={games} addComment={addComment}/>} />
+					<Route path='/catalog/:gameId' element={<GameDetails games={games} addComment={addComment} />} />
 				</Routes>
 
 			</main>
