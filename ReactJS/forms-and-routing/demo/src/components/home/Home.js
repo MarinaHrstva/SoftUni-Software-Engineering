@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
-
 import LatestGame from './latest-game/LatestGame'
-
-
-import * as gameService from '../../../services/gameServise'
+import * as gameService from '../../services/gameServise'
 
 
 function Home() {
