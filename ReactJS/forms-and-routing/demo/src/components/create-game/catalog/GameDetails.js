@@ -16,14 +16,14 @@ const GameDetails = ({
     const onChangeHandler = (e) => {
         setComment(state => ({
             ...state,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         }));
     }
 
     const addCommentHandler = (e) => {
         e.preventDefault();
-       
-        addComment(gameId,`${comment.username}: ${comment.comment}`)
+
+        addComment(gameId, `${comment.username}: ${comment.comment}`)
 
     }
 
@@ -40,30 +40,28 @@ const GameDetails = ({
                 <p className="text">
                     {game.summary}
                 </p>
-                {/* Bonus ( for Guests and Users ) */}
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {/* list all comments for current game (If any) */}
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
-                        <li className="comment">
-                            <p>Content: The best game.</p>
-                        </li>
+                        {game.comments?.map(x =>
+                            <li className="comment">
+                                <p>{x}</p>
+                            </li>
+                        )}
                     </ul>
-                    {/* Display paragraph: If there are no games in the database */}
-                    <p className="no-comment">No comments.</p>
+
+                    {!game.comments && <p className="no-comment">No comments.</p>}
+
                 </div>
                 {/* Edit/Delete buttons ( Only for creator of this game )  */}
-                <div className="buttons">
+                {/* <div className="buttons">
                     <a href="#" className="button">
                         Edit
                     </a>
                     <a href="#" className="button">
                         Delete
                     </a>
-                </div>
+                </div> */}
             </div>
 
             <article className="create-comment">
@@ -72,9 +70,9 @@ const GameDetails = ({
                     <input
                         type="text"
                         name='username'
-                        placeholder='Ivan Ivanov' 
+                        placeholder='Ivan Ivanov'
                         onChange={onChangeHandler}
-                        value={comment.username}/>
+                        value={comment.username} />
 
 
                     <textarea

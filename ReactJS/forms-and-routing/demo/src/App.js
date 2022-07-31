@@ -29,7 +29,7 @@ function App() {
 	const addComment = (gameId, comment) => {
 		setGames(state => {
 			const game = state.find(x => x._id == gameId);
-			const comments = game.comment || [];
+			const comments = game.comments || [];
 			comments.push(comment);
 
 			return [
