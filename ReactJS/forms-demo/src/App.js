@@ -8,7 +8,7 @@ function App() {
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
   const [bio, setBio] = useState('');
-  const [tac, setTac] = useState('');
+  const [tac, setTac] = useState(false);
   const [userType, setUserType] = useState('corporate');
   const [gender, setGender] = useState('f');
 
@@ -16,7 +16,7 @@ function App() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-console.log(password, age, username, bio);
+    console.log(password, age, username, bio, gender, userType, tac);
   }
 
   const onUsernameChange = (e) => {
@@ -40,29 +40,29 @@ console.log(password, age, username, bio);
 
           <div>
             <label htmlFor="age">Age:</label>
-            <input type="number" name='age' id='age' value={age} onChange={e=>setAge(e.target.value)} />
+            <input type="number" name='age' id='age' value={age} onChange={e => setAge(e.target.value)} />
           </div>
 
           <div>
             <label htmlFor="bio">Bio</label>
-            <textarea name="bio" id="bio" cols="30" rows="10" value={bio} onChange={e=>setBio(e.target.value)}/>
+            <textarea name="bio" id="bio" cols="30" rows="10" value={bio} onChange={e => setBio(e.target.value)} />
           </div>
 
           <div>
             <label htmlFor="tac">Terms and Conditions:</label>
-            <input type="checkbox" name='tac' id='tac' />
+            <input type="checkbox" name='tac' id='tac' checked={tac} onChange={e => setTac(e.target.value === 'on')} />
           </div>
 
           <div>
             <label htmlFor="individual-user-type">Individual:</label>
-            <input type="radio" name='user-type' value='individual' id='individual-user-type' />
+            <input type="radio" name='user-type' value='individual' id='individual-user-type' onChange={e => setUserType(e.target.value)} checked={userType == 'individual'} />
             <label htmlFor="corporate-user-type">Corporate:</label>
-            <input type="radio" name='user-type' value='corporate' id='corporate-user-type' />
+            <input type="radio" name='user-type' value='corporate' id='corporate-user-type' onChange={e => setUserType(e.target.value)} checked={userType == 'corporate'} />
           </div>
 
           <div>
-            <label htmlFor="gender"></label>
-            <select name="gender" id="gender">
+            <label htmlFor="gender" ></label>
+            <select name="gender" id="gender" value={gender} onChange={e => setGender(e.target.value)}>
               <option value="m">Male</option>
               <option value="f">Female</option>
             </select>
