@@ -1,4 +1,4 @@
-
+import {login} from '../../services/authService'
 
 function Login() {
 
@@ -12,6 +12,11 @@ function Login() {
 
         console.log(email)
         console.log(password);
+
+        login(email,password)
+        .then(authData=>{
+            console.log(authData)
+        })
 
     }
 
