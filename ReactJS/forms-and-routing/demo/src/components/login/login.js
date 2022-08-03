@@ -1,11 +1,13 @@
-
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../../services/authService'
+import { AuthContext } from '../../contexts/authContext'
+import * as authService from '../../services/authService'
 
 
 function Login() {
 
+    const { userLogin } = useContext(AuthContext)
     const navigate = useNavigate()
     const onSubmit = (e) => {
         e.preventDefault();
@@ -16,9 +18,10 @@ function Login() {
         } = Object.fromEntries(new FormData(e.target));
 
 
-        login(email, password)
+      authService.login(email, password)
             .then(authData => {
-                console.log(authData)
+                userLogin(authData);
+                navigate('/')
             })
             .catch(() => {
                 // TODO: page 404

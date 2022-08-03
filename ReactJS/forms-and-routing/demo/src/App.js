@@ -6,7 +6,9 @@ import { AuthContext } from './contexts/authContext'
 
 import Header from './components/header/Header'
 import Home from './components/home/Home';
-import Login from './components/login/login';
+import Login from './components/login/Login';
+import Logout from './components/logout/Logout';
+
 import Register from './components/register/Register';
 import CreateGame from './components/create-game/CreateGame';
 import Catalog from './components/catalog/Catalog';
@@ -17,7 +19,7 @@ import GameDetails from './components/catalog/GameDetails';
 function App() {
 
 	const [games, setGames] = useState([]);
-	const [auth, setAuttth] =useState({})
+	const [auth, setAuth] = useState({})
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -52,12 +54,12 @@ function App() {
 		navigate('/catalog');
 	}
 
-	const userLogin=()=>{
-
+	const userLogin = (authData) => {
+		setAuth(authData);
 	}
 
 	return (
-		<AuthContext.Provider value={{auth}}>
+		<AuthContext.Provider value={{ user:auth, userLogin }}>
 
 			<div id="box">
 				<Header />
@@ -66,6 +68,7 @@ function App() {
 						<Route path='/' element={<Home games={games} />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/register' element={<Register />} />
+						<Route path='/logout' element= {<Logout/>}/>
 						<Route path='/createGame' element={<CreateGame addGame={addGame} />} />
 						<Route path='/catalog' element={<Catalog games={games} />} />
 						<Route path='/catalog/:gameId' element={<GameDetails games={games} addComment={addComment} />} />
