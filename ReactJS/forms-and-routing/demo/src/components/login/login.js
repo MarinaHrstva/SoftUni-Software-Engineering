@@ -1,7 +1,12 @@
-import {login} from '../../services/authService'
+
+import { useNavigate } from 'react-router-dom';
+
+import { login } from '../../services/authService'
+
 
 function Login() {
 
+    const navigate = useNavigate()
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -10,13 +15,16 @@ function Login() {
             password
         } = Object.fromEntries(new FormData(e.target));
 
-        console.log(email)
-        console.log(password);
 
-        login(email,password)
-        .then(authData=>{
-            console.log(authData)
-        })
+        login(email, password)
+            .then(authData => {
+                console.log(authData)
+            })
+            .catch(() => {
+                // TODO: page 404
+                navigate('/404')
+            })
+
 
     }
 
