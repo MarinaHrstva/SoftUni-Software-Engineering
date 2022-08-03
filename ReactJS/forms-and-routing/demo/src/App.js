@@ -1,7 +1,7 @@
 import { Routes, Route,useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-import * as gameService from './services/gameServise'
+import * as gameService from './services/gameService'
 
 
 import Header from './components/header/Header'
