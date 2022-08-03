@@ -1,22 +1,23 @@
+import { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useEffect, useNavigate, useContext } from "react";
-
-import { AuthContext } from "../../contexts/authContext";
-import * as authService from '../../services/authService'
+import { AuthContext } from '../../contexts/authContext';
+import * as authService from '../../services/authService';
 
 const Logout = () => {
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
-    console.log(user);
+    const { user, userLogout } = useContext(AuthContext);
+
     useEffect(() => {
         authService.logout(user.accessToken)
             .then(() => {
+                userLogout();
                 navigate('/');
             })
             .catch(() => {
-                // navigate('/');
-            })
-    },[])
+     
+            });
+    });
 
     return null;
 }
