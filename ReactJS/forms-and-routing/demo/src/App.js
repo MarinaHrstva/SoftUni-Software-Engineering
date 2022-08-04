@@ -59,7 +59,7 @@ function App() {
 	}
 
 	const userLogout=()=>{
-		setAuth={};
+		setAuth({});
 	}
 
 	return (
